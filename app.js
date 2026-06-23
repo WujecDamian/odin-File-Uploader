@@ -8,9 +8,10 @@ app.set("view engine", "ejs");
 // Set the views directory
 app.set("views", path.join(__dirname, "views"));
 
-app.get("/", (req, res) => {
-  res.render("index");
-});
+// Routers
+const indexRouter = require("./routes/indexRouter");
+
+app.get("/", indexRouter);
 
 app.listen(3000, () => {
   console.log("App listens on http://localhost:3000/");
