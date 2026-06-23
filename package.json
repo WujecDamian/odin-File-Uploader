@@ -1,0 +1,26 @@
+{
+  "name": "odin-file-uploader",
+  "version": "1.0.0",
+  "description": "https://www.theodinproject.com/lessons/nodejs-file-uploader",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WujecDamian/odin-File-Uploader.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/WujecDamian/odin-File-Uploader/issues"
+  },
+  "homepage": "https://github.com/WujecDamian/odin-File-Uploader#readme",
+  "dependencies": {
+    "ejs": "^6.0.1",
+    "express": "^5.2.1",
+    "passport": "^0.7.0"
+  }
+}
