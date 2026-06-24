@@ -19,8 +19,16 @@
   },
   "homepage": "https://github.com/WujecDamian/odin-File-Uploader#readme",
   "dependencies": {
+    "@prisma/adapter-pg": "^7.8.0",
+    "@prisma/client": "^7.8.0",
+    "dotenv": "^17.4.2",
     "ejs": "^6.0.1",
     "express": "^5.2.1",
-    "passport": "^0.7.0"
+    "passport": "^0.7.0",
+    "pg": "^8.22.0"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.20.0",
+    "prisma": "^7.8.0"
   }
 }
