@@ -6,4 +6,4 @@ const logInUser = (req, res) => {
   res.render("logIn");
 };
 
-module.exports = { renderForm, logInUser };
+export default { renderForm, logInUser };

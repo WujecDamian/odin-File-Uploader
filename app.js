@@ -1,6 +1,10 @@
-const express = require("express");
-const path = require("path");
+import express from "express";
+import path from "path";
+import { fileURLToPath } from "url";
 const app = express();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 app.use(express.static("public"));
 // Set EJS as the view engine
@@ -10,8 +14,8 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
 // Routers
-const indexRouter = require("./routes/indexRouter");
-const logInRouter = require("./routes/logInRouter");
+import indexRouter from "./routes/indexRouter.js";
+import logInRouter from "./routes/logInRouter.js";
 
 app.use("/", indexRouter);
 app.use("/log-in", logInRouter);
