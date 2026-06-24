@@ -1,5 +1,11 @@
 <nav>
   <a href="/">Home</a>
+  <%if(!currentUser){%>
+
   <a href="/log-in">Log in</a>
   <a href="/sign-up">Sign up</a>
+  <%}else if(currentUser){%>
+  <a href="/log-out">Log out</a>
+
+  <%}%>
 </nav>

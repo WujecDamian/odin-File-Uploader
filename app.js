@@ -69,13 +69,21 @@ passport.deserializeUser(async (id, done) => {
     done(err);
   }
 });
-// Routers
+//Global User Variable (currently logged in user - access through res.locals.currentUser)
+app.use((req, res, next) => {
+  res.locals.currentUser = req.user;
+  next();
+});
+
+// Routers Routers Routers
 import indexRouter from "./routes/indexRouter.js";
 import logInRouter from "./routes/logInRouter.js";
 import signUpRouter from "./routes/signUpRouter.js";
+import logOutRouter from "./routes/logOutRouter.js";
 
 app.use("/", indexRouter);
 app.use("/log-in", logInRouter);
+app.use("/log-out", logOutRouter);
 app.use("/sign-up", signUpRouter);
 
 app.listen(3000, () => {
