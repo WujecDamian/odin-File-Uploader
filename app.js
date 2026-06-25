@@ -91,12 +91,14 @@ import logInRouter from "./routes/logInRouter.js";
 import signUpRouter from "./routes/signUpRouter.js";
 import logOutRouter from "./routes/logOutRouter.js";
 import newFolderRouter from "./routes/newFolderRouter.js";
+import folderContentRouter from "./routes/folderContentRouter.js";
 
 app.use("/", indexRouter);
 app.use("/log-in", logInRouter);
 app.use("/log-out", logOutRouter);
 app.use("/sign-up", signUpRouter);
 app.use("/new-folder", newFolderRouter);
+app.use("/folder", folderContentRouter);
 
 app.listen(3000, () => {
   console.log("App listens on http://localhost:3000/");

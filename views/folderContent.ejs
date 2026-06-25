@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home | 5xDrive</title>
+    <link rel="stylesheet" href="/styles/style.css" />
+  </head>
+  <body>
+    <%- include('./partials/nav') %> <% if(currentUser){ %>
+    <h1>Welcome <%=currentUser.fullname%></h1>
+    <%}else{%>
+    <h1>Welcome! Please log in to use our services.</h1>
+    <%}%> <%if(currentUser){ if(files){ %>
+    <section class="files">
+      <% files.forEach((file)=>{%>
+      <a href="/folder/<%=folderId%>" class="file">
+        <span><%=file.filename%></span>
+      </a>
+      <%})}%>
+      <a href="<%=folderId%>/new-file%>" id="newFile">Add file +</a>
+    </section>
+    <%}%>
+  </body>
+</html>

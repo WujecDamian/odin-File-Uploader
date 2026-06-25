@@ -157,7 +157,8 @@ nav {
   }
 }
 
-.folders {
+.folders,
+.files {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 360px));
   justify-content: center;
@@ -167,7 +168,8 @@ nav {
   margin-top: 3.5rem;
 }
 
-.folders #newFolder {
+.folders #newFolder,
+.files #newFile {
   display: inline-flex;
   align-items: center;
   justify-content: center;
