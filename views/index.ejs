@@ -13,12 +13,13 @@
     <h1>Welcome! Please log in to use our services.</h1>
     <%}%> <%if(currentUser){ if(currentUser.folders){ %>
     <section class="folders">
-      <a href="/new-folder" id="newFolder">Add folder +</a>
       <% currentUser.folders.forEach((folder)=>{%>
       <a href="/folder/<%=folder.id%>" class="folder">
         <span><%=folder.folder_name%></span>
       </a>
+
       <%})}%>
+      <a href="/new-folder" id="newFolder">Add folder +</a>
     </section>
     <%}%>
   </body>
