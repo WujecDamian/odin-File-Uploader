@@ -143,3 +143,75 @@ img {
   max-width: 100%;
   border-radius: 8px;
 }
+nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  max-width: 50%;
+  margin: 0 auto;
+  a {
+    color: #f59e0b;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+}
+
+.folders {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 360px));
+  justify-content: center;
+  max-width: 1000px;
+  margin-inline: auto;
+  gap: 2rem;
+  margin-top: 3.5rem;
+}
+
+.folders #newFolder {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 240px;
+  border: 1px dashed var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.03);
+  text-decoration: none;
+}
+
+.folder {
+  position: relative;
+  min-height: 120px;
+  padding: 1rem 1rem 1.25rem;
+  border-radius: 10px 10px 8px 8px;
+  background: linear-gradient(180deg, #fbbf24, #f59e0b);
+  color: #3f2200;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  border: 1px solid #d97706;
+}
+
+.folder::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 16px;
+  width: 55px;
+  height: 14px;
+  background: inherit;
+  border-radius: 8px 8px 0 0;
+  border: 1px solid #d97706;
+  border-bottom: none;
+}
+
+.folder span {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  margin-top: 0.4rem;
+  font-weight: 700;
+}
+
+.folder:hover {
+  transform: translateY(-2px);
+  transition: transform 0.2s ease;
+}

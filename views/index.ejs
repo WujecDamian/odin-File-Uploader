@@ -11,14 +11,14 @@
     <h1>Welcome <%=currentUser.fullname%></h1>
     <%}else{%>
     <h1>Welcome! Please log in to use our services.</h1>
-    <%}%> <% if(currentUser.folders){ %>
+    <%}%> <%if(currentUser){ if(currentUser.folders){ %>
     <section class="folders">
-      <a href="/new-folder">Add folder</a>
+      <a href="/new-folder" id="newFolder">Add folder +</a>
       <% currentUser.folders.forEach((folder)=>{%>
-      <section class="folder">
+      <a href="/folder/<%=folder.id%>" class="folder">
         <span><%=folder.folder_name%></span>
-      </section>
-      <%})%>
+      </a>
+      <%})}%>
     </section>
     <%}%>
   </body>
