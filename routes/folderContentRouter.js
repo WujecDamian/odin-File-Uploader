@@ -1,7 +1,26 @@
 import express from "express";
 const router = express.Router();
 import multer from "multer";
-const upload = multer({ dest: "uploads/" });
+import path from "path";
+
+const fileFilter = (req, file, callback) => {
+  const blockedExtensions = [".exe", ".sh", ".bat", ".cmd"];
+  const ext = path.extname(file.originalname).toLowerCase();
+
+  if (blockedExtensions.includes(ext)) {
+    // reject the file
+    return cb(new Error("File type not allowed!"), false);
+  }
+
+  // accept the file
+  cb(null, true);
+};
+
+const upload = multer({
+  dest: "uploads/",
+  limits: { fileSize: 25000000 },
+  fileFilter: fileFilter,
+}); //max 25MB filesize
 //controller
 import folderContentController from "../controllers/folderContentController.js";
 
