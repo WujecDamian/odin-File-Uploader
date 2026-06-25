@@ -217,3 +217,15 @@ nav {
   transform: translateY(-2px);
   transition: transform 0.2s ease;
 }
+
+.file {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 240px;
+  border: 1px dashed var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  background: rgba(36, 36, 36, 0.66);
+  text-decoration: none;
+}
