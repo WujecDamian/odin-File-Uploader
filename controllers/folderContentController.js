@@ -8,18 +8,20 @@ const renderPage = async (req, res) => {
 };
 
 const renderFileForm = async (req, res) => {
-  res.render("newFile");
+  res.render("newFile", { folderId: req.params.folderId });
 };
 
 const addFile = async (req, res, next) => {
   try {
     await prisma.file.create({
       data: {
-        folder_name: req.body.folderName,
-        userId: res.locals.currentUser.id,
+        file_size: req.file.size,
+        file_url: req.file.path,
+        filename: req.file.originalname,
+        folderId: Number(req.params.folderId),
       },
     });
-    res.redirect("/");
+    res.redirect(`/folder/${Number(req.params.folderId)}`);
   } catch (err) {
     return next(err);
   }
