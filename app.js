@@ -64,7 +64,16 @@ passport.use(
 passport.serializeUser((user, done) => done(null, user.id));
 passport.deserializeUser(async (id, done) => {
   try {
-    const user = await prisma.user.findUnique({ where: { id } });
+    const user = await prisma.user.findUnique({
+      where: { id },
+      include: {
+        folders: {
+          include: {
+            files: true,
+          },
+        },
+      },
+    });
     done(null, user);
   } catch (err) {
     done(err);
@@ -81,11 +90,13 @@ import indexRouter from "./routes/indexRouter.js";
 import logInRouter from "./routes/logInRouter.js";
 import signUpRouter from "./routes/signUpRouter.js";
 import logOutRouter from "./routes/logOutRouter.js";
+import newFolderRouter from "./routes/newFolderRouter.js";
 
 app.use("/", indexRouter);
 app.use("/log-in", logInRouter);
 app.use("/log-out", logOutRouter);
 app.use("/sign-up", signUpRouter);
+app.use("/new-folder", newFolderRouter);
 
 app.listen(3000, () => {
   console.log("App listens on http://localhost:3000/");
