@@ -9,17 +9,40 @@
   <body>
     <%- include('./partials/nav') %> <% if(currentUser){ %>
     <h1>Welcome <%=currentUser.fullname%></h1>
-    <%}else{%>
-    <h1>Welcome! Please log in to use our services.</h1>
-    <%}%> <%if(currentUser){ if(files){ %>
-    <section class="files">
-      <% files.forEach((file)=>{%>
-      <a href="/folder/<%=folderId%>" class="file">
-        <span><%=file.filename%></span>
-      </a>
-      <%})}%>
-      <a href="<%=folderId%>/new-file%>" id="newFile">Add file +</a>
-    </section>
-    <%}%>
+
+    <main class="files__container">
+      <%}else{%>
+      <h1>Welcome! Please log in to use our services.</h1>
+      <%}%> <%if(currentUser){%>
+      <section class="folder__operations">
+        <h2 class="folder__name"><%=folder.folder_name%></h2>
+        <form
+          action="<%=folderId%>/rename"
+          method="post"
+          class="folder__rename"
+        >
+          <input
+            type="text"
+            name="folderName"
+            id="folderName"
+            value="<%=folder.folder_name%>"
+          />
+          <input type="submit" value="Rename" />
+        </form>
+        <form action="<%=folderId%>/delete" method="post">
+          <input type="submit" value="Delete <%=folder.folder_name%>" />
+        </form>
+      </section>
+      <%if(files){ %>
+      <section class="files">
+        <% files.forEach((file)=>{%>
+        <a href="/folder/<%=folderId%>" class="file">
+          <span><%=file.filename%></span>
+        </a>
+        <%})}%>
+        <a href="<%=folderId%>/new-file%>" id="newFile">Add file +</a>
+      </section>
+      <%}%>
+    </main>
   </body>
 </html>

@@ -32,5 +32,6 @@ router.post(
   upload.single("file"),
   folderContentController.addFile,
 );
-
+router.post("/:folderId/rename", folderContentController.renameFolder);
+router.post("/:folderId/delete", folderContentController.deleteFolder);
 export default router;
