@@ -1,9 +1,10 @@
 import { prisma } from "../lib/prisma.js";
 
 const renderPage = async (req, res) => {
-  const files = await prisma.file.findUnique({
-    where: { id: Number(req.params.folderId) },
+  const files = await prisma.file.findMany({
+    where: { folderId: Number(req.params.folderId) },
   });
+  console.log(files);
   res.render("folderContent", { files, folderId: req.params.folderId });
 };
 
