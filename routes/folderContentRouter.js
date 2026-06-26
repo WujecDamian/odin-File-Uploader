@@ -9,11 +9,11 @@ const fileFilter = (req, file, callback) => {
 
   if (blockedExtensions.includes(ext)) {
     // reject the file
-    return cb(new Error("File type not allowed!"), false);
+    return callback(new Error("File type not allowed!"), false);
   }
 
   // accept the file
-  cb(null, true);
+  callback(null, true);
 };
 
 const upload = multer({
