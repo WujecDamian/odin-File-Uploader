@@ -9,7 +9,6 @@ const renderPage = async (req, res) => {
       id: Number(req.params.folderId),
     },
   });
-  console.log(files);
   res.render("folderContent", { files, folderId: req.params.folderId, folder });
 };
 
