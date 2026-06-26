@@ -1,7 +1,11 @@
 import express from "express";
 const router = express.Router();
 import multer from "multer";
+import { v2 as cloudinary } from "cloudinary";
+import { CloudinaryStorage } from "multer-storage-cloudinary";
 import path from "path";
+import { prisma } from "../lib/prisma.js";
+import "dotenv/config";
 
 const fileFilter = (req, file, callback) => {
   const blockedExtensions = [".exe", ".sh", ".bat", ".cmd"];
@@ -15,9 +19,18 @@ const fileFilter = (req, file, callback) => {
   // accept the file
   callback(null, true);
 };
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: "5xDrive",
+    resource_type: "raw",
+    fieldname: (req, file) => `${file.originalname}`,
+    public_id: (req, file) => `${file.originalname}-${Date.now()}`,
+  },
+});
 
 const upload = multer({
-  dest: "uploads/",
+  storage: storage,
   limits: { fileSize: 25000000 },
   fileFilter: fileFilter,
 }); //max 25MB filesize

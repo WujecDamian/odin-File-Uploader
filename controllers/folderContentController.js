@@ -17,6 +17,7 @@ const renderFileForm = async (req, res) => {
 };
 
 const addFile = async (req, res, next) => {
+  console.log(req.file);
   try {
     await prisma.file.create({
       data: {
