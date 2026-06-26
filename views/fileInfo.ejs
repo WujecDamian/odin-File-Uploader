@@ -20,7 +20,9 @@
       <span class="file__parentfolder"
         >Parent folder: <%=folder.folder_name %></span
       >
-      <a href="/<%=file.file_url%>" download="<%=file.filename%>"
+      <a
+        href="<%= file.file_url.replace(/\/upload\//, '/upload/fl_attachment/') %>"
+        download="<%= file.filename %>"
         ><button>Download file</button></a
       >
     </section>
