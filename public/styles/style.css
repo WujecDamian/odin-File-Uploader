@@ -240,7 +240,8 @@ nav {
   min-height: 80vh;
 }
 
-.folder__operations {
+.folder__operations,
+.file__info {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -250,8 +251,8 @@ nav {
   color: var(--text);
   background: rgba(255, 255, 255, 0.03);
   text-decoration: none;
-  padding-top: 2rem;
-  margin-top: 2rem;
+  padding-block: 2rem;
+  margin-block: 2rem;
   gap: 1rem;
   .folder__rename {
     display: flex;

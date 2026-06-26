@@ -23,6 +23,7 @@ const upload = multer({
 }); //max 25MB filesize
 //controller
 import folderContentController from "../controllers/folderContentController.js";
+import fileInfoController from "../controllers/fileInfoController.js";
 
 // define the home page route
 router.get("/:folderId", folderContentController.renderPage);
@@ -34,4 +35,8 @@ router.post(
 );
 router.post("/:folderId/rename", folderContentController.renameFolder);
 router.post("/:folderId/delete", folderContentController.deleteFolder);
+
+//file contents
+router.get("/:folderId/file/:fileId", fileInfoController.renderPage);
+
 export default router;

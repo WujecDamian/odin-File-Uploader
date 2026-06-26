@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home | 5xDrive</title>
+    <link rel="stylesheet" href="/styles/style.css" />
+  </head>
+  <body>
+    <%- include('./partials/nav') %> <% if(currentUser){ %>
+    <a href="/folder/<%=folder.id%>"><- <%=folder.folder_name%> </a>
+    <%}else{%>
+    <h1>Welcome! Please log in to use our services.</h1>
+    <%}%> <%if(currentUser){ if(currentUser.folders){ %>
+    <section class="file__info">
+      <span class="file__filename">Filename: <%=file.filename %></span>
+      <span class="file__url">File url: <%=file.file_url %></span>
+      <span class="file__size">File size: <%=file.file_size/1000000%> MB</span>
+      <span class="file__uploaddate">Upload date: <%=file.uploaded_at %></span>
+      <span class="file__parentfolder"
+        >Parent folder: <%=folder.folder_name %></span
+      >
+      <a href="/<%=file.file_url%>" download="<%=file.filename%>"
+        ><button>Download file</button></a
+      >
+    </section>
+    <%}}%>
+  </body>
+</html>
